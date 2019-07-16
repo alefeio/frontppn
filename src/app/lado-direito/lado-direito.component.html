@@ -1,0 +1,124 @@
+<!-- social widget -->
+<!-- <div class="aside-widget">
+    <div class="section-title">
+      <h2 class="title">Social Media</h2>
+    </div>
+    <div class="social-widget">
+      <ul>
+        <li>
+          <a href="#" class="social-facebook">
+            <i class="fa fa-facebook"></i>
+            <span>21.2K<br>Followers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="social-twitter">
+            <i class="fa fa-twitter"></i>
+            <span>10.2K<br>Followers</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="social-google-plus">
+            <i class="fa fa-google-plus"></i>
+            <span>5K<br>Followers</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+<!-- /social widget -->
+
+<!-- post widget -->
+<div class="aside-widget">
+  <div class="section-title">
+    <h2 class="title text-danger">Mais Acessadas</h2>
+  </div>
+  <!-- post -->
+  <div class="post post-widget" *ngFor="let pc of postService.pPopulares">
+    <a (click)="top()" class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.img"><img [src]="pc.img"
+        alt=""></a>
+    <div class="post-body">
+      <div class="post-category">
+        <a (click)="top()" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+      </div>
+      <h3 class="post-title"><a (click)="top()" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a>
+      </h3>
+      <ul class="post-meta">
+        <!-- <li><a href="author.html">John Doe</a></li> -->
+        <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+          </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+      </ul>
+      <ul class="post-meta">
+        <li class="text-success"><i class="fa fa-eye" aria-hidden="true"></i> {{pc.visitas}}</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /post -->
+</div>
+<!-- /post widget -->
+
+<!-- post widget -->
+<div class="aside-widget">
+  <div class="section-title">
+    <h2 class="title text-danger">Mais Curtidas</h2>
+  </div>
+  <!-- post -->
+  <div class="post post-widget" *ngFor="let pc of postService.mCurtidas">
+    <a (click)="top()" class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.img"><img [src]="pc.img"
+        alt=""></a>
+    <div class="post-body">
+      <div class="post-category">
+        <a (click)="top()" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+      </div>
+      <h3 class="post-title"><a (click)="top()" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a>
+      </h3>
+      <ul class="post-meta">
+        <!-- <li><a href="author.html">John Doe</a></li> -->
+        <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+          </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+      </ul>
+      <ul class="post-meta">
+        <li class="text-danger"><i class="fa fa-heart" aria-hidden="true"></i> {{pc.totalCurtida}}</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /post -->
+</div>
+<!-- /post widget -->
+
+<!-- post widget -->
+<div class="aside-widget" *ngIf="postService.mComentadas.length">
+  <div class="section-title">
+    <h2 class="title text-danger">Mais Comentadas</h2>
+  </div>
+  <!-- post -->
+  <div class="post post-widget" *ngFor="let pc of postService.mComentadas">
+    <a (click)="top()" class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.img"><img [src]="pc.img"
+        alt=""></a>
+    <div class="post-body">
+      <div class="post-category">
+        <a (click)="top()" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+      </div>
+      <h3 class="post-title"><a (click)="top()" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a>
+      </h3>
+      <ul class="post-meta">
+        <!-- <li><a href="author.html">John Doe</a></li> -->
+        <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+          </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+      </ul>
+      <ul class="post-meta">
+        <li class="text-primary"><i class="fa fa-comment" aria-hidden="true"></i> {{pc.totalComentario}}</li>
+      </ul>
+    </div>
+  </div>
+  <!-- /post -->
+</div>
+<!-- /post widget -->
+
+<!-- ad widget-->
+<div class="aside-widget text-center bg-light" style="width: 100%">
+    <a *ngIf="anuncio?.link" [href]="anuncio.link" target="_blank" style="display: inline-block;margin: auto;">
+      <img *ngIf="anuncio?.img" class="img-responsive" [src]="anuncio.img" alt="">
+    </a>
+  </div>
+  <!-- /ad widget -->

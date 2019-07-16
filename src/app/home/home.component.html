@@ -1,0 +1,556 @@
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div id="hot-post" class="row hot-post">
+      <div class="col-md-8 hot-post-left">
+        <!-- post -->
+        <div class="post post-thumb">
+          <a *ngIf="destaquesPrincipais[0]?.url" class="post-img"
+            [routerLink]="['/noticia', destaquesPrincipais[0].url]">
+            <img *ngIf="destaquesPrincipais[0]?.img" class="img-fluid" [src]="destaquesPrincipais[0].img" alt="">
+            <img *ngIf="!destaquesPrincipais[0]?.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+          </a>
+          <div class="post-body">
+            <div class="post-category">
+              <a [routerLink]="['/categoria', destaquesPrincipais[0].urlCategoria]"
+                *ngIf="destaquesPrincipais[0]?.categoria">{{destaquesPrincipais[0].categoria}}</a>
+            </div>
+            <h3 class="post-title title-lg"><a *ngIf="destaquesPrincipais[0]?.url"
+                [routerLink]="['/noticia', destaquesPrincipais[0].url]" [innerHTML]="destaquesPrincipais[0].titulo"></a>
+            </h3>
+            <ul class="post-meta">
+              <!-- <li><a href="author.html">John Doe</a></li> -->
+              <li *ngIf="destaquesPrincipais[0]?.data"><span
+                  *ngIf="destaquesPrincipais[0]?.cidade">{{destaquesPrincipais[0].cidade}}/{{destaquesPrincipais[0].uf}}
+                  - </span>{{destaquesPrincipais[0].data | date: 'dd/MM/yyyy'}} {{destaquesPrincipais[0].hora}}</li>
+            </ul>
+          </div>
+        </div>
+        <!-- /post -->
+      </div>
+      <div class="col-md-4 hot-post-right">
+        <!-- post -->
+        <div class="post post-thumb">
+          <a class="post-img" [routerLink]="['/noticia', destaquesPrincipais[1].url]" *ngIf="destaquesPrincipais[1]?.url">
+            <img [src]="destaquesPrincipais[1].img" alt="" class="img-fluid">
+            <img *ngIf="!destaquesPrincipais[1]?.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+          </a>
+          <div class="post-body">
+            <div class="post-category">
+              <a [routerLink]="['/categoria', destaquesPrincipais[1].urlCategoria]"
+                *ngIf="destaquesPrincipais[1]?.categoria">{{destaquesPrincipais[1].categoria}}</a>
+            </div>
+            <h3 class="post-title"><a [routerLink]="['/noticia', destaquesPrincipais[1].url]"
+                *ngIf="destaquesPrincipais[1]?.titulo">{{destaquesPrincipais[1].titulo}}</a>
+            </h3>
+            <ul class="post-meta">
+              <!-- <li><a href="author.html">John Doe</a></li> -->
+              <li *ngIf="destaquesPrincipais[1]?.data"><span
+                  *ngIf="destaquesPrincipais[1]?.cidade">{{destaquesPrincipais[1].cidade}}/{{destaquesPrincipais[1].uf}}
+                  - </span>{{destaquesPrincipais[1].data | date: 'dd/MM/yyyy'}} {{destaquesPrincipais[1].hora}}</li>
+            </ul>
+          </div>
+        </div>
+        <!-- /post -->
+
+        <!-- post -->
+        <div class="post post-thumb">
+          <a class="post-img" [routerLink]="['/noticia', destaquesPrincipais[2].url]" *ngIf="destaquesPrincipais[2]?.url">
+            <img [src]="destaquesPrincipais[2].img" class="img-fluid" alt="">
+            <img *ngIf="!destaquesPrincipais[2]?.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+          </a>
+          <div class="post-body">
+            <div class="post-category">
+              <a [routerLink]="['/categoria', destaquesPrincipais[2].urlCategoria]"
+                *ngIf="destaquesPrincipais[2]?.categoria">{{destaquesPrincipais[2].categoria}}</a>
+            </div>
+            <h3 class="post-title"><a [routerLink]="['/noticia', destaquesPrincipais[2].url]"
+                *ngIf="destaquesPrincipais[2]?.titulo">{{destaquesPrincipais[2].titulo}}</a></h3>
+            <ul class="post-meta">
+              <!-- <li><a href="author.html">John Doe</a></li> -->
+              <li *ngIf="destaquesPrincipais[2]?.data"><span
+                  *ngIf="destaquesPrincipais[2]?.cidade">{{destaquesPrincipais[0].cidade}}/{{destaquesPrincipais[0].uf}}
+                  - </span>{{destaquesPrincipais[2].data | date: 'dd/MM/yyyy'}} {{destaquesPrincipais[2].hora}}</li>
+            </ul>
+          </div>
+        </div>
+        <!-- /post -->
+      </div>
+    </div>
+    <!-- /row -->
+
+    <!-- row -->
+    <div id="hot-post" class="row hot-post">
+      <div class="col-md-3 hot-post-right" *ngFor="let dLateral of destaquesLaterais">
+        <!-- post -->
+        <div class="post post-thumb">
+          <a class="post-img" [routerLink]="['/noticia', dLateral.url]" *ngIf="dLateral?.url">
+            <img *ngIf="dLateral?.img" [src]="dLateral.img" class="img-fluid" alt="">
+            <img *ngIf="!dLateral?.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+          </a>
+          <div class="post-body">
+            <div class="post-category">
+              <a [routerLink]="['/categoria', dLateral.urlCategoria]"
+                *ngIf="dLateral?.categoria">{{dLateral.categoria}}</a>
+            </div>
+            <h3 class="post-title"><a [routerLink]="['/noticia', dLateral.url]"
+                *ngIf="dLateral?.titulo">{{dLateral.titulo}}</a>
+            </h3>
+            <ul class="post-meta">
+              <!-- <li><a href="author.html">John Doe</a></li> -->
+              <li *ngIf="dLateral?.data"><span *ngIf="dLateral?.cidade">{{dLateral.cidade}}/{{dLateral.uf}} -
+                </span>{{dLateral.data | date: 'dd/MM/yyyy'}} {{dLateral.hora}}</li>
+            </ul>
+          </div>
+        </div>
+        <!-- /post -->
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+  
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-8">
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="title text-danger">Pará</h2>
+            </div>
+          </div>
+          <!-- post -->
+          <div class="col-md-6" *ngFor="let not of noticPara">
+            <div class="post">
+              <a class="post-img" [routerLink]="['/noticia', not.url]" *ngIf="not?.url">
+                <img [src]="not.img" alt="" class="img-fluid" *ngIf="not?.img">
+                <img *ngIf="!not.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+              </a>
+              <div class="post-body">
+                <div class="post-category">
+                  <a [routerLink]="['/categoria', not.urlCategoria]" *ngIf="not?.categoria">{{not.categoria}}</a>
+                </div>
+                <h3 class="post-title" *ngIf="not?.titulo"><a [routerLink]="['/noticia', not.url]">{{not?.titulo}}</a>
+                </h3>
+                <ul class="post-meta">
+                  <!-- <li><a href="author.html">John Doe</a></li> -->
+                  <li *ngIf="not?.data"><span *ngIf="not?.cidade">{{not.cidade}} -
+                    </span>{{not.data | date: 'dd/MM/yyyy'}} {{not.hora}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="title text-danger">Nacional</h2>
+            </div>
+          </div>
+          <!-- post -->
+          <ng-container *ngFor="let pc of noticNacionais">
+            <div class="col-md-4">
+              <div class="post post-sm">
+                <a class="post-img" [routerLink]="['/noticia', pc.url]" class="img-fluid" *ngIf="pc?.url">
+                  <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+                  <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+                </a>
+                <div class="post-body">
+                  <div class="post-category">
+                    <a [routerLink]="['/categoria', pc.urlCategoria]" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                  </div>
+                  <h3 class="post-title title-sm"><a [routerLink]="['/noticia', pc.url]"
+                      *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                      </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- /post -->
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="title text-danger">Polícia</h2>
+            </div>
+          </div>
+          <!-- post -->
+          <ng-container *ngFor="let pc of policia">
+            <div class="col-md-4">
+              <div class="post post-sm">
+                <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+                  <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+                  <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+                </a>
+                <div class="post-body">
+                  <!-- <div class="post-category">
+                          <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                        </div> -->
+                  <h3 class="post-title title-sm"><a [routerLink]="['/noticia', pc.url]"
+                      *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                      </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- /post -->
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="title text-danger">Política</h2>
+            </div>
+          </div>
+          <!-- post -->
+          <ng-container *ngFor="let pc of politica">
+            <div class="col-md-4">
+              <div class="post post-sm">
+                <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+                  <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+                  <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+                </a>
+                <div class="post-body">
+                  <!-- <div class="post-category">
+                        <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                      </div> -->
+                  <h3 class="post-title title-sm"><a [routerLink]="['/noticia', pc.url]"
+                      *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                      </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- /post -->
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="title text-danger">Educação</h2>
+            </div>
+          </div>
+          <!-- post -->
+          <ng-container *ngFor="let pc of educacao">
+            <div class="col-md-4">
+              <div class="post post-sm">
+                <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+                  <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+                  <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+                </a>
+                <div class="post-body">
+                  <!-- <div class="post-category">
+                      <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                    </div> -->
+                  <h3 class="post-title title-sm"><a [routerLink]="['/noticia', pc.url]"
+                      *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                      </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- /post -->
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="title text-danger">Saúde</h2>
+            </div>
+          </div>
+          <!-- post -->
+          <ng-container *ngFor="let pc of saude">
+            <div class="col-md-4">
+              <div class="post post-sm">
+                <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+                  <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+                  <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+                </a>
+                <div class="post-body">
+                  <!-- <div class="post-category">
+                      <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                    </div> -->
+                  <h3 class="post-title title-sm"><a [routerLink]="['/noticia', pc.url]"
+                      *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                      </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- /post -->
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="section-title">
+              <h2 class="title text-danger">Esporte</h2>
+            </div>
+          </div>
+          <!-- post -->
+          <ng-container *ngFor="let pc of esporte">
+            <div class="col-md-4">
+              <div class="post post-sm">
+                <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+                  <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+                  <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+
+                </a>
+                <div class="post-body">
+                  <!-- <div class="post-category">
+                        <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                      </div> -->
+                  <h3 class="post-title title-sm"><a [routerLink]="['/noticia', pc.url]"
+                      *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                      </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          <!-- /post -->
+        </div>
+        <!-- /row -->
+      </div>
+      <div class="col-md-4">
+        <app-lado-direito></app-lado-direito>
+
+        <!-- newsletter widget -->
+        <!-- <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Newsletter</h2>
+          </div>
+          <div class="newsletter-widget">
+            <form>
+              <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium.</p>
+              <input class="input" name="newsletter" placeholder="Enter Your Email">
+              <button class="primary-button">Subscribe</button>
+            </form>
+          </div>
+        </div> -->
+        <!-- /newsletter widget -->
+
+        <!-- post widget -->
+        <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Atualidades</h2>
+          </div>
+          <!-- post -->
+          <div class="post post-widget" *ngFor="let pc of atualidades">
+            <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+              <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+              <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+
+            </a>
+            <div class="post-body">
+              <!-- <div class="post-category">
+                <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+              </div> -->
+              <h3 class="post-title"><a [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+              <ul class="post-meta">
+                <!-- <li><a href="author.html">John Doe</a></li> -->
+                <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                  </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <!-- /post widget -->
+
+        <!-- post widget -->
+        <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Cultura</h2>
+          </div>
+          <!-- post -->
+          <div class="post post-widget" *ngFor="let pc of cultura">
+            <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+              <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+              <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+            </a>
+            <div class="post-body">
+              <!-- <div class="post-category">
+                <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+              </div> -->
+              <h3 class="post-title"><a [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+              <ul class="post-meta">
+                <!-- <li><a href="author.html">John Doe</a></li> -->
+                <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                  </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <!-- /post widget -->
+
+        <!-- post widget -->
+        <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Loterias</h2>
+          </div>
+          <!-- post -->
+          <div class="post post-widget" *ngFor="let pc of loterias">
+            <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+              <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+              <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+            </a>
+            <div class="post-body">
+              <!-- <div class="post-category">
+                  <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                </div> -->
+              <h3 class="post-title"><a [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+              <ul class="post-meta">
+                <!-- <li><a href="author.html">John Doe</a></li> -->
+                <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                  </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <!-- /post widget -->
+
+        <!-- post widget -->
+        <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Jogos</h2>
+          </div>
+          <!-- post -->
+          <div class="post post-widget" *ngFor="let pc of jogos">
+            <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+              <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+              <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+            </a>
+            <div class="post-body">
+              <!-- <div class="post-category">
+                  <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                </div> -->
+              <h3 class="post-title"><a [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+              <ul class="post-meta">
+                <!-- <li><a href="author.html">John Doe</a></li> -->
+                <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                  </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <!-- /post widget -->
+
+        <!-- post widget -->
+        <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Horóscopo</h2>
+          </div>
+          <!-- post -->
+          <div class="post post-widget" *ngFor="let pc of horoscopo">
+            <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+              <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+              <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+            </a>
+            <div class="post-body">
+              <!-- <div class="post-category">
+                  <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                </div> -->
+              <h3 class="post-title"><a [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+              <ul class="post-meta">
+                <!-- <li><a href="author.html">John Doe</a></li> -->
+                <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                  </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <!-- /post widget -->
+
+        <!-- post widget -->
+        <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Agenda Cultural</h2>
+          </div>
+          <!-- post -->
+          <div class="post post-widget" *ngFor="let pc of agendaCultural">
+            <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.url">
+              <img [src]="pc.img" class="img-fluid" alt="" *ngIf="pc?.img">
+              <img *ngIf="!pc.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
+            </a>
+            <div class="post-body">
+              <!-- <div class="post-category">
+                  <a href="category.html" *ngIf="pc?.categoria">{{pc.categoria}}</a>
+                </div> -->
+              <h3 class="post-title"><a [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+              <ul class="post-meta">
+                <!-- <li><a href="author.html">John Doe</a></li> -->
+                <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                  </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+              </ul>
+            </div>
+          </div>
+          <!-- /post -->
+        </div>
+        <!-- /post widget -->
+
+        <!-- category widget -->
+        <!-- <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title text-danger">Categorias</h2>
+          </div>
+          <div class="category-widget">
+            <ul>
+              <li *ngFor="let cat of categorias"><a [routerLink]="['/categoria', cat.urlCateg]">{{cat.nomeCateg}}</a></li>
+            </ul>
+          </div>
+        </div> -->
+        <!-- /category widget -->
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->

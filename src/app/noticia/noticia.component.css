@@ -1,0 +1,13 @@
+img{
+    max-width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.section-row{
+    overflow: hidden;
+}
+
+.section-row img{
+    max-width:100%;
+}

@@ -1,0 +1,305 @@
+
+<meta property="og:title" content="{{post[0].titulo}}" />
+<meta property="og:url" content="{{postService.urlAtual}}" />
+<meta property="og:description"
+  content="Portal Para News é um portal de notícias do Pará e do Brasil, sempre atualizado e comprometido com a verdade e transmissao dos fatos em tempo real.">
+<meta property="og:image" content="{{post[0].thumb}}">
+<meta property="og:type" content="article" />
+<meta property="og:locale" content="pt_BR" />
+
+<!-- section -->
+<div class="section">
+
+  <!-- PAGE HEADER -->
+  <div id="post-header" class="page-header">
+    <div *ngIf="post[0]?.img" class="page-header-bg"
+      [ngStyle]="{'background-image': 'url(' + post[0].img + ')', 'background-position': positionBg}"
+      data-stellar-background-ratio="0.5"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10">
+          <div class="post-category">
+            <a href="category.html" *ngIf="post[0]?.categoria">{{post[0].categoria}}</a>
+          </div>
+          <h1 *ngIf="post[0]?.titulo">{{post[0].titulo}}</h1>
+          <ul class="post-meta">
+            <!-- <li><a href="author.html">John Doe</a></li> -->
+            <li *ngIf="post[0]?.data"><span *ngIf="post[0]?.cidade">{{post[0]?.cidade}} -
+              </span>{{post[0]?.data | date: 'dd/MM/yyyy'}} {{post[0]?.hora}}</li>
+          </ul>
+          <ul class="post-meta">
+            <li><i class="fa fa-eye"></i> {{post[0]?.visitas}}</li>
+            <li *ngIf="postService?.totalComentarios"><i class="fa fa-comments"></i> {{postService.totalComentarios}}
+            </li>
+            <li *ngIf="postService?.totalCurtidas"><i class="fa fa-heart"></i> {{postService.totalCurtidas}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /PAGE HEADER -->
+
+  <!-- container -->
+  <div class="container" style="margin-top: 20px">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-8">
+        <!-- post share -->
+        <div class="section-row">
+          <div class="post-share">
+            <a style="cursor: pointer" class="social-pinterest text-white"
+              (click)="curtir()"><i class="fa fa-heart"> {{postService.totalCurtidas}}</i></a>
+
+            <!-- <a *ngIf="post[0]?.titulo" style="cursor: pointer"
+              href="https://api.whatsapp.com/send?text={{post[0].titulo}} {{postService.urlAtual}}"
+              class="bg-success text-white" target="_blank"><i class="fa fa-whatsapp"></i></a> -->
+
+            <a *ngIf="post[0]?.titulo" style="cursor: pointer"
+              href="whatsapp://send?text={{post[0].titulo}} {{postService.urlAtual}}"
+              class="bg-success text-white" target="_blank"><i class="fa fa-whatsapp"></i></a>
+
+            <a *ngIf="post[0]?.titulo" href="https://www.facebook.com/sharer/sharer.php?u={{postService.urlAtual2}}"
+              target="_blank" title="Compartilhar {{post[0].titulo}} no Facebook" class="social-facebook"><i
+                class="fa fa-facebook"></i></a>
+
+            <a *ngIf="post[0]?.titulo"
+              href="http://twitter.com/intent/tweet?text={{post[0].titulo}}&url={{postService.urlAtual}}"
+              title="Twittar sobre {{post[0].titulo}}" target="_blank" class="social-twitter"><i
+                class="fa fa-twitter"></i></a>
+            <!-- <a href="#" class="social-pinterest"><i class="fa fa-pinterest"></i><span>Pin</span></a> -->
+
+            <!-- <a href="#"><i class="fa fa-envelope"></i></a> -->
+
+            <button type="button" (click)="goBack()" class="btn btn-lg btn-default text-right">Voltar</button>
+          </div>
+        </div>
+        <!-- /post share -->
+        <iframe src="https://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fportalparanews.com.br&width=178&layout=button&action=recommend&size=small&show_faces=true&share=true&height=65&appId" width="178" height="65" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>
+        <!-- post content -->
+        <div class="section-row" *ngIf="post[0]?.conteudo">
+          <p [innerHTML]="post[0].conteudo | keepHtml"></p>
+        </div>
+        <!-- /post content -->
+
+        <!-- post tags -->
+        <!-- <div class="section-row">
+          <div class="post-tags">
+            <ul>
+              <li>TAGS:</li>
+              <li><a href="#">Social</a></li>
+              <li><a href="#">Lifestyle</a></li>
+              <li><a href="#">Fashion</a></li>
+              <li><a href="#">Health</a></li>
+            </ul>
+          </div>
+        </div> -->
+        <!-- /post tags -->
+
+        <!-- post nav -->
+        <!-- <div class="section-row">
+          <div class="post-nav">
+            <div class="prev-post">
+              <a class="post-img" href="blog-post.html"><img src="./img/widget-8.jpg" alt=""></a>
+              <h3 class="post-title"><a href="#">Sed ut perspiciatis, unde omnis iste natus error sit</a></h3>
+              <span>Previous post</span>
+            </div>
+
+            <div class="next-post">
+              <a class="post-img" href="blog-post.html"><img src="./img/widget-10.jpg" alt=""></a>
+              <h3 class="post-title"><a href="#">Postea senserit id eos, vivendo periculis ei qui</a></h3>
+              <span>Next post</span>
+            </div>
+          </div>
+        </div> -->
+        <!-- /post nav  -->
+
+        <!-- post author -->
+        <!-- <div class="section-row">
+          <div class="section-title">
+            <h3 class="title">About <a href="author.html">John Doe</a></h3>
+          </div>
+          <div class="author media">
+            <div class="media-left">
+              <a href="author.html">
+                <img class="author-img media-object" src="./img/avatar-1.jpg" alt="">
+              </a>
+            </div>
+            <div class="media-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.</p>
+              <ul class="author-social">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div> -->
+        <!-- /post author -->
+
+        <!-- /related post -->
+        <div>
+          <div class="section-title">
+            <h3 class="title">Notícias Relacionadas</h3>
+          </div>
+          <div class="row">
+            <!-- post -->
+            <div class="col-md-4" *ngFor="let r of relacionados">
+              <div class="post post-sm">
+                <a class="post-img" [routerLink]="['/noticia', r.url]" *ngIf="r?.img" (click)="top()"><img [src]="r.img"
+                    alt=""></a>
+                <div class="post-body">
+                  <div class="post-category">
+                    <a [routerLink]="['/noticia', r.url]" *ngIf="r?.categoria" (click)="top()">{{r.categoria}}</a>
+                  </div>
+                  <h3 class="post-title"><a [routerLink]="['/noticia', r.url]" *ngIf="r?.titulo"
+                      (click)="top()">{{r.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="r?.data"><span *ngIf="r?.cidade">{{r.cidade}} -
+                      </span>{{r.data | date: 'dd/MM/yyyy'}} {{r.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /post -->
+          </div>
+        </div>
+        <!-- /related post -->
+
+        <!-- post comments -->
+        <div class="section-row" *ngIf="comentarios?.length">
+          <div class="section-title">
+            <h3 class="title">{{comentarios.length}} Comentário<span *ngIf="comentarios?.length > 1">s</span></h3>
+          </div>
+          <div class="post-comments">
+            <!-- comment -->
+            <div class="media" *ngFor="let c of comentarios">
+              <!-- <div class="media-left">
+                <img class="media-object" src="./img/avatar-2.jpg" alt="">
+              </div> -->
+              <div class="media-body">
+                <div class="media-heading">
+                  <h4 *ngIf="c?.nome">{{c.nome}}</h4>
+                  <h4 *ngIf="!c?.nome">Anônimo</h4>
+                  <span class="time">{{c.data | date: 'dd/MM/yyyy'}} {{c.hora}}</span>
+                </div>
+                <p *ngIf="c?.comentario">{{c.comentario}}</p>
+                <!-- <a href="#" class="reply">Reply</a> -->
+                <!-- comment -->
+                <!-- <div class="media media-author">
+                  <div class="media-left">
+                    <img class="media-object" src="./img/avatar-1.jpg" alt="">
+                  </div>
+                  <div class="media-body">
+                    <div class="media-heading">
+                      <h4>John Doe</h4>
+                      <span class="time">5 min ago</span>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                      nisi ut aliquip ex ea commodo consequat.</p>
+                    <a href="#" class="reply">Reply</a>
+                  </div>
+                </div> -->
+                <!-- /comment -->
+              </div>
+            </div>
+            <!-- /comment -->
+          </div>
+        </div>
+        <!-- /post comments -->
+
+        <!-- post reply -->
+        <div class="section-row">
+          <div class="section-title">
+            <h3 class="title">Deixe seu comentário</h3>
+          </div>
+          <form [formGroup]="form" (ngSubmit)="enviarComentario()">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea class="input" placeholder="Comentário" formControlName="comentario"></textarea>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input class="input" type="text" placeholder="Nome" formControlName="nome">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input class="input" type="email" placeholder="Email" formControlName="email">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <input class="input" type="text" placeholder="Site" formControlName="site">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <button class="primary-button" type="submit">Enviar</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        <!-- /post reply -->
+      </div>
+      <div class="col-md-4">
+        <!-- ad widget -->
+        <!-- <div class="aside-widget text-center">
+          <a href="#" style="display: inline-block;margin: auto;">
+            <img class="img-responsive" src="/assets/img/ad-3.jpg" alt="">
+          </a>
+        </div> -->
+        <!-- /ad widget -->
+
+        <!-- social widget -->
+        <!-- <div class="aside-widget">
+          <div class="section-title">
+            <h2 class="title">Social Media</h2>
+          </div>
+          <div class="social-widget">
+            <ul>
+              <li>
+                <a href="#" class="social-facebook">
+                  <i class="fa fa-facebook"></i>
+                  <span>21.2K<br>Followers</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-twitter">
+                  <i class="fa fa-twitter"></i>
+                  <span>10.2K<br>Followers</span>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="social-google-plus">
+                  <i class="fa fa-google-plus"></i>
+                  <span>5K<br>Followers</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div> -->
+        <!-- /social widget -->
+
+        <app-lado-direito></app-lado-direito>
+
+        <!-- Ad widget -->
+        <!-- <div class="aside-widget text-center">
+          <a href="#" style="display: inline-block;margin: auto;">
+            <img class="img-responsive" src="assets/img/ad-1.jpg" alt="">
+          </a>
+        </div> -->
+        <!-- /Ad widget -->
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->
