@@ -1,0 +1,39 @@
+<!-- SECTION -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+      <!-- row -->
+      <div class="row">
+        <div class="col-md-12">
+  
+          <div class="row">
+            <!-- post -->
+            <div class="col-md-3" *ngFor="let pc of posts">
+              <div class="post">
+                  <a class="post-img" [routerLink]="['/noticia', pc.url]" *ngIf="pc?.img"><img [src]="pc.img" alt=""></a>
+                <div class="post-body">
+                  <div class="post-category">
+                  </div>
+                  <h3 class="post-title"><a [routerLink]="['/noticia', pc.url]" *ngIf="pc?.titulo">{{pc.titulo}}</a></h3>
+                  <ul class="post-meta">
+                    <!-- <li><a href="author.html">John Doe</a></li> -->
+                    <li *ngIf="pc?.data"><span *ngIf="pc?.cidade">{{pc.cidade}} -
+                      </span>{{pc.data | date: 'dd/MM/yyyy'}} {{pc.hora}}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- /post -->
+          </div>
+  
+          <!-- <div class="section-row loadmore text-center">
+            <a href="#" class="primary-button">Load More</a>
+          </div> -->
+        </div>
+  
+      </div>
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /SECTION -->

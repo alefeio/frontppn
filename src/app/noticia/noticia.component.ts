@@ -45,7 +45,6 @@ export class NoticiaComponent implements OnInit {
       .subscribe(
         post => {
           this.postService.urlAtual = `${this.postService.urlAtual}/noticia/${post[0].url}`
-          this.postService.urlAtual2 = encodeURIComponent(`${this.postService.urlAtual2}/noticia/${post[0].url}`)
           // console.log('urlAtual ', this.postService.urlAtual)
           this.postService.pegarIp()
           this.postService.acesso()
@@ -97,10 +96,6 @@ export class NoticiaComponent implements OnInit {
         () => {
           this.postService.totalCurtidas++
           this.postService.maisCurtidas()
-        },
-        error => {
-          console.error(error)
-          alert('Erro ao enviar seu comentario. Tente novamente!')
         }
       )
   }

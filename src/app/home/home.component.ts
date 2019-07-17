@@ -42,14 +42,14 @@ export class HomeComponent implements OnInit {
     private categoriaService: CategoriaService,
     private anuncioService: AnuncioService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.postService.setUrlAtual('http://www.portalparanews.com.br')
     window.scroll(0,0)
     // this.listarPosts()
-    this.listarDestaquesPrincipais()
-    // this.listarDestaquesLaterais()
-    // this.listarCategorias()
-    // this.postService.urlAtual = 'http://www.portalparanews.com.br'
-    // this.postService.acesso()
+    await this.listarDestaquesPrincipais()
+    await this.listarDestaquesLaterais()
+    await this.listarCategorias()
+    this.postService.acesso()
   }
 
   public forImg(param, posts) {

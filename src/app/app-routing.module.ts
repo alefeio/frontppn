@@ -6,6 +6,7 @@ import { NoticiaComponent } from './noticia/noticia.component';
 import { ContatoComponent } from './contato/contato.component';
 import { TrabalheComponent } from './trabalhe/trabalhe.component';
 import { DenuncieComponent } from './denuncie/denuncie.component';
+import { FiltroComponent } from './filtro/filtro.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'trabalhe', component: TrabalheComponent },
   { path: 'denuncie', component: DenuncieComponent },
   { path: 'categoria/:categoria', component: CategoriaComponent },
+  { path: 'filtro/:filtro', component: FiltroComponent },
   { path: 'noticia/:url', component: NoticiaComponent }
 ];
 

@@ -7,8 +7,8 @@ export class ApiService {
 
   public teste = 'teste'
 
-  public urlApi = 'http://localhost:3000'
-  // public urlApi = 'https://apippn.herokuapp.com'
+  // public urlApi = 'http://localhost:3000'
+  public urlApi = 'https://apippn.herokuapp.com'
 
   constructor() { }
 }

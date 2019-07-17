@@ -22,7 +22,6 @@ export class PostService {
   public publicIP: any
 
   public urlAtual = 'http://www.portalparanews.com.br'
-  public urlAtual2 = 'portalparanews.com.br'
   public urlImg = 'http://www.portalparanews.com.br/imgBlog'
 
   constructor(private http: HttpClient, private apiService: ApiService) { }
@@ -38,6 +37,10 @@ export class PostService {
   public setPostsPopulares(posts) {
     this.pPopulares = posts
     // console.log('Posts Populares no Service => ', this.pPopulares)
+  }
+
+  setUrlAtual(url) {
+    this.urlAtual = url
   }
 
   public setMaisCurtidas(posts) {
@@ -182,6 +185,10 @@ export class PostService {
 
   public listarNoticiasPara(ids) {
     return this.http.post<Post[]>(`${this.postsUrl}/noticias-para`, ids)
+  }
+
+  public listarFiltro(filtro) {
+    return this.http.get<Post[]>(`${this.postsUrl}/filtro/${filtro}`)
   }
 
   public listarNoticiasNacionais(ids) {

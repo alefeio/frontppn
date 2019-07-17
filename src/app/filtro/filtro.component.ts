@@ -8,11 +8,11 @@ import { Location } from '@angular/common'
 import { switchMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-categoria',
-  templateUrl: './categoria.component.html',
-  styleUrls: ['./categoria.component.css']
+  selector: 'app-filtro',
+  templateUrl: './filtro.component.html',
+  styleUrls: ['./filtro.component.css']
 })
-export class CategoriaComponent implements OnInit {
+export class FiltroComponent implements OnInit {
 
   public posts: Post[] = []
   public urlImg = 'http://www.portalparanews.com.br/imgBlog'
@@ -26,7 +26,7 @@ export class CategoriaComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0)
     this.route.params
-      .pipe(switchMap((params: Params) => this.postService.byCategoria(params['categoria'])))
+      .pipe(switchMap((params: Params) => this.postService.listarFiltro(params['filtro'])))
       .subscribe(
         posts => {
           this.setPosts(posts)

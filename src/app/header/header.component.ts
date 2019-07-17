@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
   constructor(private categoriaService: CategoriaService, private postService: PostService) { }
 
   async ngOnInit() {
-    // this.listarCategorias()
+    this.listarCategorias()
 
     this.subjectPesquisa.pipe(debounceTime(500)).subscribe(async valor => {
       if (valor != '') {

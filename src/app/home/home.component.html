@@ -33,7 +33,8 @@
       <div class="col-md-4 hot-post-right">
         <!-- post -->
         <div class="post post-thumb">
-          <a class="post-img" [routerLink]="['/noticia', destaquesPrincipais[1].url]" *ngIf="destaquesPrincipais[1]?.url">
+          <a class="post-img" [routerLink]="['/noticia', destaquesPrincipais[1].url]"
+            *ngIf="destaquesPrincipais[1]?.url">
             <img [src]="destaquesPrincipais[1].img" alt="" class="img-fluid">
             <img *ngIf="!destaquesPrincipais[1]?.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
           </a>
@@ -57,7 +58,8 @@
 
         <!-- post -->
         <div class="post post-thumb">
-          <a class="post-img" [routerLink]="['/noticia', destaquesPrincipais[2].url]" *ngIf="destaquesPrincipais[2]?.url">
+          <a class="post-img" [routerLink]="['/noticia', destaquesPrincipais[2].url]"
+            *ngIf="destaquesPrincipais[2]?.url">
             <img [src]="destaquesPrincipais[2].img" class="img-fluid" alt="">
             <img *ngIf="!destaquesPrincipais[2]?.img" class="img-fluid" src="/assets/img/sem-imagem.jpg" alt="">
           </a>
@@ -111,7 +113,7 @@
     <!-- /row -->
   </div>
   <!-- /container -->
-  
+
   <!-- container -->
   <div class="container">
     <!-- row -->
@@ -146,6 +148,9 @@
             </div>
           </div>
           <!-- /post -->
+        </div>
+        <div class="section-row loadmore text-center">
+          <a class="primary-button" routerLink="/filtro/para">+ Pará</a>
         </div>
         <!-- /row -->
 
@@ -182,6 +187,9 @@
           <!-- /post -->
         </div>
         <!-- /row -->
+        <div class="section-row loadmore text-center">
+          <a class="primary-button" routerLink="/filtro/nacional">+ Nacional</a>
+        </div>
 
         <!-- row -->
         <div class="row">

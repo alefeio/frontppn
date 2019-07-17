@@ -16,6 +16,7 @@ import { LadoDireitoComponent } from './lado-direito/lado-direito.component';
 import { ContatoComponent } from './contato/contato.component';
 import { TrabalheComponent } from './trabalhe/trabalhe.component';
 import { DenuncieComponent } from './denuncie/denuncie.component';
+import { FiltroComponent } from './filtro/filtro.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DenuncieComponent } from './denuncie/denuncie.component';
     LadoDireitoComponent,
     ContatoComponent,
     TrabalheComponent,
-    DenuncieComponent
+    DenuncieComponent,
+    FiltroComponent
   ],
   imports: [
     BrowserModule,
