@@ -46,10 +46,10 @@ export class HomeComponent implements OnInit {
     window.scroll(0,0)
     // this.listarPosts()
     this.listarDestaquesPrincipais()
-    this.listarDestaquesLaterais()
-    this.listarCategorias()
-    this.postService.urlAtual = 'http://www.portalparanews.com.br'
-    this.postService.acesso()
+    // this.listarDestaquesLaterais()
+    // this.listarCategorias()
+    // this.postService.urlAtual = 'http://www.portalparanews.com.br'
+    // this.postService.acesso()
   }
 
   public forImg(param, posts) {
@@ -85,8 +85,8 @@ export class HomeComponent implements OnInit {
         posts => {
           this.destaquesPrincipais = posts
           this.forImg(this.destaquesPrincipais, posts)
-          // console.log('Destaques principais => ', posts)
-          // console.log(`IDS Destaques => ${this.idsDestaques}`)
+          console.log('Destaques principais => ', posts)
+          console.log(`IDS Destaques => ${this.idsDestaques}`)
         }
       )
   }
